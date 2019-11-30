@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: rest-full-api-gateway
+
+  output:
+    ansi:
+      enabled: detect
+
+  messages:
+    basename: i18n/messages
+
+  boot:
+    admin:
+      context-path: /boot-admin
+      notify:
+        pagerduty:
+          client-url: http://localhost:${server.port}/${spring.boot.admin.context-path}
+
+  zipkin:
+    base-url: http://localhost:9411/
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+dubbo:
+  metadata-report:
+    address: zookeeper://127.0.0.1:2181
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    client: curator
+    simplified: true
+  protocol:
+    name: dubbo
+    serialization: protostuff
+  consumer:
+    timeout: 60000
+    check: false
+    validation: true
+    filter: tracing
+
+server:
+  port: 8085
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+app:
+  jwt:
+    secret: 5d66670787ff43778785318f5a12f8c0
+    avlPeriod: 24h # 24h
+    header: Authorization
+    tokenPrefix: Bearer
+
+debug: true
