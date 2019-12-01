@@ -1,0 +1,111 @@
+spring:
+  application:
+    name: house-service
+
+  output:
+    ansi:
+      enabled: detect
+
+  messages:
+    basename: i18n/messages
+
+  #datasource
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/house_service?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+    username: root
+    password: root123456
+
+
+  #jpa
+  jpa:
+    open-in-view: true
+    show_sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        hbm2ddl:
+          auto: none
+        jdbc:
+          batch_size: 200
+          batch_versioned_data: true
+        order_inserts: true
+        order_updates: true
+        generate_statistics: true
+        use_sql_comments: true
+        format_sql: true
+        enable_lazy_load_no_trans: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  zipkin:
+    base-url: http://192.168.10.117:9411/
+
+#port
+server:
+  port: 8082
+
+
+
+dubbo:
+  metadata-report:
+    address: zookeeper://127.0.0.1:2181
+  scan:
+    base-packages: com.syphan.practice.house.service.impl
+  protocol:
+    serialization: protostuff
+    name: dubbo
+    port: 20850
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    client: curator
+    simplified: true
+  provider:
+    timeout: 60000
+    validation: true
+    filter: tracing
+  consumer:
+    timeout: 60000
+    check: false
+    validation: true
+    filter: tracing
+
+logging:
+  file:
+    max-size: 100MB
+    max-history: 15
+  level:
+    org:
+      apache:
+        dubbo: debug
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql:
+              BasicBinder: trace
+    com:
+      jidian: debug
+
+#eureka
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    registryFetchIntervalSeconds: 5
+#    serviceUrl:
+#      defaultZone: "http://localhost:8239/eureka/"
+#  instance:
+#    health-check-url-path: "/actuator/health"
+#    lease-renewal-interval-in-seconds: 10
+#    metadata-map:
+#      startup: ${random.int}
+#    prefer-ip-address: true
+
+debug: true

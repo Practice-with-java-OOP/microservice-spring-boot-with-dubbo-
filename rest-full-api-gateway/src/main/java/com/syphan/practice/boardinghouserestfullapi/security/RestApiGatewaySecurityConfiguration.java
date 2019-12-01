@@ -36,7 +36,8 @@ public class RestApiGatewaySecurityConfiguration extends BaseSecurityConfig {
                 "/actuator/**",
                 "/api/v1/auth/sign-in",
                 String.format(environment.getProperty("spring.boot.admin.context-path", "/registration-service"), "/**"),
-                "/api/v1/users"
+                "/api/v1/users",
+                "/api/v1/admin/excel"
         ).permitAll();
         super.configure(http);
     }

@@ -7,6 +7,7 @@
         <module>rest-full-api-gateway</module>
         <module>com-syphan-common</module>
         <module>com-syphan-registration</module>
+        <module>com-syphan-house</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -29,6 +30,10 @@
         <zookeeper.version>3.4.14</zookeeper.version>
         <spring-cloud-starter-zipkin.version>2.1.2.RELEASE</spring-cloud-starter-zipkin.version>
         <jsonwebtoken.version>0.9.1</jsonwebtoken.version>
+        <jxls.version>2.6.0</jxls.version>
+        <jxls-poi.version>1.2.0</jxls-poi.version>
+        <jxls.jexcel.version>1.0.8</jxls.jexcel.version>
+        <jxls.reader.version>2.0.5</jxls.reader.version>
     </properties>
 
     <dependencyManagement>
@@ -65,7 +70,17 @@
             </dependency>
             <dependency>
                 <groupId>com.syphan.practice</groupId>
+                <artifactId>com-syphan-house-api</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.syphan.practice</groupId>
                 <artifactId>com-syphan-registration-dao</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.syphan.practice</groupId>
+                <artifactId>com-syphan-house-dao</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
@@ -146,6 +161,27 @@
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>
                 <version>${jsonwebtoken.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jxls</groupId>
+                <artifactId>jxls</artifactId>
+                <version>${jxls.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jxls</groupId>
+                <artifactId>jxls-poi</artifactId>
+                <version>${jxls-poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jxls</groupId>
+                <artifactId>jxls-jexcel</artifactId>
+                <version>${jxls.jexcel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jxls</groupId>
+                <artifactId>jxls-reader</artifactId>
+                <version>${jxls.reader.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

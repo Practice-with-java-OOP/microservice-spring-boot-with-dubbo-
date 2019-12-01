@@ -5,6 +5,7 @@ import com.syphan.practice.common.api.exception.BIZException;
 import com.syphan.practice.registration.api.dto.AdminCreateUserDto;
 import com.syphan.practice.registration.api.dto.UserCreateDto;
 import com.syphan.practice.registration.api.model.User;
+import org.springframework.core.io.ByteArrayResource;
 
 public interface UserService extends BaseService<User, Integer> {
 
@@ -16,4 +17,5 @@ public interface UserService extends BaseService<User, Integer> {
 
     User findByUsername(String username) throws BIZException;
 
+    ByteArrayResource exportExcel() throws BIZException;
 }

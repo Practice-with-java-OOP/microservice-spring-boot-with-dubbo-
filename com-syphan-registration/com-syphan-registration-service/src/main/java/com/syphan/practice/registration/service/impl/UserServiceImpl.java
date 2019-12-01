@@ -12,11 +12,17 @@ import com.syphan.practice.registration.api.model.User;
 import com.syphan.practice.registration.dao.RoleRepository;
 import com.syphan.practice.registration.dao.UserRepository;
 import com.syphan.practice.registration.service.util.Utils;
+import org.jxls.common.Context;
+import org.jxls.util.JxlsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -103,6 +109,30 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
     @Override
     public User findByUsername(String username) throws BIZException {
         return repository.findByUsername(username);
+    }
+
+    @Override
+    public ByteArrayResource exportExcel() throws BIZException {
+        List<User> users = repository.findAll();
+        InputStream inputStream = this.getClass().getResourceAsStream("/report_template/export_user.xls");
+        Context context = new Context();
+        context.putVar("data", users);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ByteArrayResource resource = null;
+        try {
+            JxlsHelper.getInstance().processTemplate(inputStream, outputStream, context);
+            resource = new ByteArrayResource(outputStream.toByteArray());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                inputStream.close();
+                outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return resource;
     }
 
     private Role getDefaultUserRole() {
