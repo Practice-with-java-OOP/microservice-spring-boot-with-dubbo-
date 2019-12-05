@@ -39,7 +39,7 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService {
         return create(user);
     }
 
-    private UserPrincipal create(User user) {
+    public static UserPrincipal create(User user) {
         Set<String> roleNameSet = new HashSet<>();
         Set<GrantedAuthority> authorities = user.getRoles().stream().map(Role::getPermissions)
                 .flatMap(Collection::stream).collect(Collectors.toSet()).stream()

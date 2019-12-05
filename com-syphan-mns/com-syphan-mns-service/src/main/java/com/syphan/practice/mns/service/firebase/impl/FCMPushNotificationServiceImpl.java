@@ -31,6 +31,10 @@ public class FCMPushNotificationServiceImpl {
     }
 
     public void pushConsumerNotificationToMultipleTokens(PushNotificationRequest request) {
-        fcmService.sendMessageToMultipleTokens(request);
+        try {
+            fcmService.sendMessageToMultipleTokens(request);
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }

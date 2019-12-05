@@ -50,7 +50,10 @@ public class JwtTokenProvider {
     }
 
     public String generateToken(Authentication authentication) {
-        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+        return generateToken((UserPrincipal) authentication.getPrincipal());
+    }
+
+    public String generateToken(UserPrincipal userPrincipal) {
         Date now = new Date();
         Date expiration = new Date(now.getTime() + jwtTokenProperties.getAvlPeriod().toMillis());
         return Jwts.builder()

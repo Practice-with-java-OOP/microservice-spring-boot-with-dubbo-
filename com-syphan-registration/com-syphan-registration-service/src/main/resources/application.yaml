@@ -94,4 +94,14 @@ logging:
     com:
       jidian: debug
 
+app:
+  social:
+    facebook:
+      client-id: 574723326271010
+      client-secret: 5aaa0aea0c1caf4e03a7c45d10dbb280
+    google:
+      client-ids:
+        - 1037573039447-6pshsm1cf5lemrnpsbskmq87k1jnn7sr.apps.googleusercontent.com
+      client-secret: 7zy3QCMNfeBDrinSb8CGTSll
+
 debug: true
