@@ -9,6 +9,7 @@
         <module>com-syphan-registration</module>
         <module>com-syphan-house</module>
         <module>com-syphan-mns</module>
+        <module>com-syphan-luu-code</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
