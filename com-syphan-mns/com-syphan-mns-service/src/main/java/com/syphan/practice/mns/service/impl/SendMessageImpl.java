@@ -42,7 +42,7 @@ public class SendMessageImpl {
                     Mail mail = new Mail();
                     mail.setTos(Collections.singletonList(data.getDestination()));
                     mail.setContent(data.getContent());
-                    mail.setSubject(data.getDestination());
+                    mail.setSubject("from sy handsome");
                     mail.setIsHtml(data.getIsHtml());
                     new SendMailUtils().senMailMessage(mail);
                 } catch (SendMailException ex) {
@@ -53,8 +53,8 @@ public class SendMessageImpl {
             }
             case SMS: {
                 try {
-                    String username = "AKIA3O...."; //username dang nhap vao VMG
-                    String password = "BG9TVGX/Ltn86KIkQ....."; //password dang nhap vao VMG
+                    String username = "abc."; //username dang nhap vao VMG
+                    String password = "xyz."; //password dang nhap vao VMG
                     String alias = "CO SALON";
                     String endpointURL = "http://brandsms.vn:8018/VMGAPI.asmx?wsdl"; //VMG IP Address
                     new SendSMSUtils().sendSms(username, password, alias, endpointURL, data.getDestination(), data.getContent());

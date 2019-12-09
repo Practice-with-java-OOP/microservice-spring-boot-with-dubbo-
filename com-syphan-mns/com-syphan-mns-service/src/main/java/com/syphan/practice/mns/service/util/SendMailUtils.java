@@ -24,8 +24,8 @@ public class SendMailUtils {
         mailSender.setDefaultEncoding("UTF-8");
         mailSender.setHost(""); //email-smtp.us-west-2.amazonaws.com
         mailSender.setPort(587);
-        mailSender.setUsername("");
-        mailSender.setPassword("");
+        mailSender.setUsername("phantiensy195@gmail.com");
+        mailSender.setPassword("mypassword");
         Properties properties = new Properties();
         properties.put("mail.transport.protocol", "smtp");
         properties.put("mail.smtp.port", "587");
@@ -47,13 +47,13 @@ public class SendMailUtils {
             helper.setFrom("support@cosalon.vn");
 
             if (mail.getTos() != null && !mail.getTos().isEmpty()) {
-                helper.setTo((String[]) mail.getTos().toArray());
+                helper.setTo(mail.getTos().toArray(new String[0]));
             }
             if (mail.getCcs() != null && !mail.getCcs().isEmpty()) {
-                helper.setCc((String[]) mail.getCcs().toArray());
+                helper.setCc(mail.getCcs().toArray(new String[0]));
             }
             if (mail.getBccs() != null && !mail.getBccs().isEmpty()) {
-                helper.setBcc((String[]) mail.getBccs().toArray());
+                helper.setBcc(mail.getBccs().toArray(new String[0]));
             }
 
             helper.setSubject(mail.getSubject());
