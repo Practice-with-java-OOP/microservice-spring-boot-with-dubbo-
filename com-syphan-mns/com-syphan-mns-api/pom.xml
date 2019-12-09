@@ -11,5 +11,16 @@
 
     <artifactId>com-syphan-mns-api</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.syphan.practice</groupId>
+            <artifactId>com-syphan-api</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
