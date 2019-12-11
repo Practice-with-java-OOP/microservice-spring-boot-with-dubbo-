@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			  xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+			  http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+			  name="retail_invoice_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c4369721-650b-4a42-9de3-fca4fa439dc4">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="net.sf.jasperreports.export.character.encoding" value="UTF-8"/>
+	<style name="MainStyle" isDefault="true" pattern="" isBlankWhenNull="true" fontName="Times New Roman" isPdfEmbedded="true"/>
+	<subDataset name="listOrderLines" uuid="9f9d3cbc-9f67-4b54-b0e1-8ca586d4e5ba">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter  - JSON File"/>
+		<queryString language="jsonql">
+			<![CDATA[listOrderLines.*]]>
+		</queryString>
+	</subDataset>
+	<queryString language="json">
+		<![CDATA[]]>
+	</queryString>
+	<field name="orderRef" class="java.lang.String"/>
+	<field name="store.name" class="java.lang.String"/>
+	<field name="store.address" class="java.lang.String"/>
+	<field name="store.mobile" class="java.lang.String"/>
+	<field name="store.logoUrl" class="java.lang.String"/>
+	<field name="customer.name" class="java.lang.String"/>
+	<field name="customer.mobile" class="java.lang.String"/>
+	<field name="customer.address" class="java.lang.String"/>
+	<field name="totalAmount" class="java.math.BigDecimal"/>
+	<field name="discountAmount" class="java.math.BigDecimal"/>
+	<field name="deliveryCost" class="java.math.BigDecimal"/>
+	<field name="payment.paidAmount" class="java.math.BigDecimal"/>
+	<field name="payment.debtAmount" class="java.math.BigDecimal"/>
+	<field name="deliveryAddress" class="java.lang.String"/>
+	<variable name="currencyFormatter" class="java.text.DecimalFormat">
+		<variableExpression><![CDATA[new DecimalFormat("#,###")]]></variableExpression>
+	</variable>
+	<variable name="dateFormatter" class="java.text.DateFormat">
+		<variableExpression><![CDATA[new java.text.SimpleDateFormat("'Ngày 'dd' tháng 'MM' năm 'yyyy")]]></variableExpression>
+	</variable>
+	<background>
+		<band height="14" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="463" y="0" width="90" height="14" uuid="219550cf-ac19-4515-8ec7-840a238201c8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER} + "/" + $V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</background>
+	<title>
+		<band height="192" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="231" height="20" uuid="1cbf509d-7a49-4b66-a466-0995d5149bda">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Cửa hàng " + $F{store.name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="30" width="231" height="20" uuid="d852327b-0239-4e1a-9b72-0ae38e833d50">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement markup="styled">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style isBold='true'>"+"Địa chỉ: " + "</style>" + ($F{store.address} == null ? "" : $F{store.address})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="50" width="231" height="20" uuid="b4c01b6e-646f-4285-a951-716629285219">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement markup="styled">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style isBold='true'>"+"Số điện thoại: " + "</style>" + ($F{store.mobile} == null ? "" : $F{store.mobile})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="90" width="555" height="20" uuid="45328321-b220-4c0f-8a1d-1a5c7889010f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["HOÁ ĐƠN BÁN LẺ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="324" y="110" width="231" height="20" uuid="6d2ddb2c-2a33-4cb2-958d-fb6ada413bae"/>
+				<textElement textAlignment="Right" markup="styled">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Số: " + $F{orderRef}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="130" width="555" height="20" uuid="4a1da48f-d7b9-4d0d-95c9-8856e740e567"/>
+				<textElement markup="styled">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style isBold='true'>"+"Họ tên người mua hàng: " + "</style>" + $F{customer.name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="150" width="555" height="20" uuid="88d31492-6561-46c2-a425-ace8df34e1e5"/>
+				<textElement markup="styled">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style isBold='true'>"+"Số điện thoại: " + "</style>" + $F{customer.mobile}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="170" width="555" height="20" uuid="7a904cfc-e01f-4652-b0ec-8f284bbc82d4"/>
+				<textElement markup="styled">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style isBold='true'>"+"Địa chỉ: " + "</style>" + ($F{deliveryAddress} == null ? "" : $F{deliveryAddress})]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="32" height="21" uuid="f871da01-7888-42ce-9667-4e11daff7934">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["STT"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="0" width="205" height="21" uuid="75c74930-078f-404e-a48e-760b7d9dc4e6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Mã SP/Tên SP"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="0" width="56" height="21" uuid="37041e12-69a4-4a85-94d2-1e38a41b5534">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Số lượng"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="347" y="0" width="64" height="21" uuid="33bdcf3e-fe3d-4bd8-8b27-fa089eb603fe">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Đơn giá"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="0" width="64" height="21" uuid="3c73803a-f13d-45bb-8140-08d5784621ed">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Giảm giá"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="0" width="80" height="21" uuid="4ec0a081-22c1-4441-a517-1ce42609e19d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Thành tiền"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="237" y="0" width="54" height="21" uuid="883ce10d-489a-4c60-a6df-a66072eed319">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ĐTV"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="21" uuid="ff36296b-f3b0-4fe7-a0b9-45f0b6aee75e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("listOrderLines")]]></dataSourceExpression>
+				<subreportExpression><![CDATA["retail_invoice_A4_item.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="236" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="265" height="21" uuid="aad329bb-782d-480f-9350-169d2fce1a25">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+					<paragraph leftIndent="32"/>
+				</textElement>
+				<textFieldExpression><![CDATA["GIẢM GIÁ :"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="0" width="290" height="21" uuid="81f91041-fa23-4656-aec8-1d974b59d6f5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{currencyFormatter}.format($F{discountAmount}) + "đ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="20" width="265" height="20" uuid="8956cbac-c664-4707-b770-00b12454a73e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+					<paragraph leftIndent="32"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PHÍ VẬN CHUYỂN :"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="20" width="290" height="20" uuid="c148c302-f098-4ffc-b5fd-1b70f6a4a5d3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{currencyFormatter}.format($F{deliveryCost}) + "đ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="39" width="265" height="20" uuid="13de5e5a-c005-43d6-af9b-91dc1905e0cd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+					<paragraph leftIndent="32"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TỔNG THÀNH TIỀN :"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="39" width="290" height="20" uuid="600d601b-96eb-40b1-9e99-f040960e8470">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{currencyFormatter}.format($F{totalAmount}) + "đ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="80" width="555" height="20" uuid="cc795de7-593e-4472-8e01-448a4365e5c2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["KHÁCH ĐÃ TRẢ : " + ($F{payment.paidAmount} == null ? "0" : $V{currencyFormatter}.format($F{payment.paidAmount})) + "đ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="100" width="555" height="20" uuid="608ef1fe-f0d2-44f5-a404-ef18fd1ff0cd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CÒN LẠI: " + ($F{payment.debtAmount} == null ? "0" : $V{currencyFormatter}.format($F{payment.debtAmount})) + "đ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="140" width="240" height="20" uuid="0502f85c-a06c-47b6-8f44-f613981843ac">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" markup="styled">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{dateFormatter}.format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="299" y="160" width="244" height="20" uuid="98177730-7ad7-4c40-aa46-cb895117e91c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Người mua hàng"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="160" width="240" height="20" uuid="1f06be41-2f1f-48bc-ae04-7d9271f0b54c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" markup="styled">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Người bán hàng"]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

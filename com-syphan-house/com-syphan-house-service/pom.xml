@@ -36,6 +36,18 @@
             <groupId>com.syphan.practice</groupId>
             <artifactId>com-syphan-registration-api</artifactId>
         </dependency>
+
+        <!-- JasperReports print-->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>${jasperreports.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-fonts</artifactId>
+            <version>${jasperreports.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

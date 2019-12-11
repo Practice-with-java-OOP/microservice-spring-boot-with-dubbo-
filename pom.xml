@@ -39,6 +39,7 @@
         <firebase-admin.version>6.10.0</firebase-admin.version>
         <restfb.version>2.21.0</restfb.version>
         <google-api-client.version>1.29.2</google-api-client.version>
+        <jasperreports.version>6.10.0</jasperreports.version>
     </properties>
 
     <dependencyManagement>

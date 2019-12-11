@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="retail_invoice_A4_item" pageWidth="555" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="914904c3-0290-4f5e-aab5-bc1ebdcdf94c">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="net.sf.jasperreports.export.character.encoding" value="UTF-8"/>
+	<style name="MainStyle" isDefault="true" pattern="" isBlankWhenNull="true" fontName="Times New Roman" isPdfEmbedded="true"/>
+	<queryString language="json">
+		<![CDATA[listOrderLines]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="id"/>
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="ordersId" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="ordersId"/>
+		<fieldDescription><![CDATA[ordersId]]></fieldDescription>
+	</field>
+	<field name="productId" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="productId"/>
+		<fieldDescription><![CDATA[productId]]></fieldDescription>
+	</field>
+	<field name="uomId" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="uomId"/>
+		<fieldDescription><![CDATA[uomId]]></fieldDescription>
+	</field>
+	<field name="unitPrice" class="java.lang.Double">
+		<property name="net.sf.jasperreports.json.field.expression" value="unitPrice"/>
+		<fieldDescription><![CDATA[unitPrice]]></fieldDescription>
+	</field>
+	<field name="quantity" class="java.lang.Long">
+		<property name="net.sf.jasperreports.json.field.expression" value="quantity"/>
+		<fieldDescription><![CDATA[quantity]]></fieldDescription>
+	</field>
+	<field name="discountType" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="discountType"/>
+		<fieldDescription><![CDATA[discountType]]></fieldDescription>
+	</field>
+	<field name="discountAmount" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="discountAmount"/>
+		<fieldDescription><![CDATA[discountAmount]]></fieldDescription>
+	</field>
+	<field name="pickFrom" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="pickFrom"/>
+		<fieldDescription><![CDATA[pickFrom]]></fieldDescription>
+	</field>
+	<field name="product.name" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="product.name"/>
+	</field>
+	<field name="product.uoms" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="product.uoms[0].baseUom.name"/>
+	</field>
+	<field name="product.code" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="product.code"/>
+	</field>
+	<field name="totalAmount" class="java.math.BigDecimal">
+		<property name="net.sf.jasperreports.json.field.expression" value="totalAmount"/>
+		<fieldDescription><![CDATA[totalAmount]]></fieldDescription>
+	</field>
+	<variable name="currencyFormatter" class="java.text.DecimalFormat">
+		<variableExpression><![CDATA[new DecimalFormat("#,###")]]></variableExpression>
+	</variable>
+	<variable name="dateFormatter" class="java.text.DateFormat">
+		<variableExpression><![CDATA[new java.text.SimpleDateFormat("'Ngày 'dd' tháng 'MM' năm 'yyyy")]]></variableExpression>
+	</variable>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<group name="ordersId">
+		<groupExpression><![CDATA[$F{ordersId}]]></groupExpression>
+	</group>
+	<group name="productId">
+		<groupExpression><![CDATA[$F{productId}]]></groupExpression>
+	</group>
+	<group name="uomId">
+		<groupExpression><![CDATA[$F{uomId}]]></groupExpression>
+	</group>
+	<group name="unitPrice">
+		<groupExpression><![CDATA[$F{unitPrice}]]></groupExpression>
+	</group>
+	<group name="quantity">
+		<groupExpression><![CDATA[$F{quantity}]]></groupExpression>
+	</group>
+	<group name="discountType">
+		<groupExpression><![CDATA[$F{discountType}]]></groupExpression>
+	</group>
+	<group name="discountAmount">
+		<groupExpression><![CDATA[$F{discountAmount}]]></groupExpression>
+	</group>
+	<group name="pickFrom">
+		<groupExpression><![CDATA[$F{pickFrom}]]></groupExpression>
+	</group>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="32" height="21" uuid="076bacd3-21d4-48a9-9196-167a1972e588">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="0" width="205" height="21" uuid="caafda98-dc42-40ee-9e0e-07d6721c002d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{product.code} + "/" + $F{product.name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="0" width="56" height="21" uuid="9b34531d-567c-430a-83d0-0370678a5b60">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box leftPadding="5" rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="347" y="0" width="64" height="21" uuid="f292679c-0bff-4ff0-aa88-9cf0b6b80e01">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box leftPadding="5" rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{currencyFormatter}.format($F{unitPrice}) + "đ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="0" width="64" height="21" uuid="dc3cf98b-f79a-4681-ad31-fc23b808426b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box leftPadding="5" rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{discountAmount} == null ? "0" : $V{currencyFormatter}.format($F{discountAmount})) + "đ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="0" width="80" height="21" uuid="d03ae5e8-fdeb-4a4a-a214-370f850102c2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box leftPadding="5" rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{totalAmount} == null ? "0" : $V{currencyFormatter}.format($F{totalAmount})) + "đ"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="237" y="0" width="54" height="21" uuid="1e1c9b43-399e-47a6-b21b-023124e92503">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box leftPadding="5" rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{product.uoms}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

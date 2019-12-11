@@ -8,4 +8,6 @@ import com.syphan.practice.house.api.model.BoardingHouse;
 public interface BoardingHouseService extends BaseService<BoardingHouse, Integer> {
 
     BoardingHouse create(int userId, BoardingHouseCreateDto data) throws BIZException;
+
+    String printHouse(Integer id) throws BIZException;
 }
