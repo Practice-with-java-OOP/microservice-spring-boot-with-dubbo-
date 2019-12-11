@@ -53,7 +53,7 @@
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Cửa hàng " + $F{userPhone}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Nhà có tên " + $F{houseName}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="30" width="231" height="20" uuid="d852327b-0239-4e1a-9b72-0ae38e833d50">
@@ -62,7 +62,7 @@
 				<textElement markup="styled">
 					<font size="14" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<style isBold='true'>"+"Địa chỉ: " + "</style>" + ($F{houseName} == null ? "" : $F{houseName})]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<style isBold='true'>"+"Địa chỉ: " + "</style>" + ($F{address} == null ? "" : $F{address})]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="50" width="231" height="20" uuid="b4c01b6e-646f-4285-a951-716629285219">
@@ -71,7 +71,7 @@
 				<textElement markup="styled">
 					<font size="14" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<style isBold='true'>"+"Số điện thoại: " + "</style>" + ($F{address} == null ? "" : $F{address})]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<style isBold='true'>"+"Số điện thoại: " + "</style>" + ($F{userPhone} == null ? "" : $F{userPhone})]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="90" width="555" height="20" uuid="45328321-b220-4c0f-8a1d-1a5c7889010f">
@@ -87,7 +87,14 @@
 				<textElement textAlignment="Right" markup="styled">
 					<font size="14" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Số: " + $F{username}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Số phòng: " + $F{roomNum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="130" width="555" height="20" uuid="4a1da48f-d7b9-4d0d-95c9-8856e740e567"/>
+				<textElement markup="styled">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style isBold='true'>"+"Họ tên người mua hàng: " + "</style>" + $F{username}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
@@ -106,110 +113,4 @@
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 		</band>
 	</pageFooter>
-	<summary>
-		<band height="236" splitType="Stretch">
-			<textField>
-				<reportElement x="0" y="0" width="265" height="21" uuid="aad329bb-782d-480f-9350-169d2fce1a25">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="11" isBold="true"/>
-					<paragraph leftIndent="32"/>
-				</textElement>
-				<textFieldExpression><![CDATA["GIẢM GIÁ :"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="20" width="265" height="20" uuid="8956cbac-c664-4707-b770-00b12454a73e">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="11" isBold="true"/>
-					<paragraph leftIndent="32"/>
-				</textElement>
-				<textFieldExpression><![CDATA["PHÍ VẬN CHUYỂN :"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="39" width="265" height="20" uuid="13de5e5a-c005-43d6-af9b-91dc1905e0cd">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="11" isBold="true"/>
-					<paragraph leftIndent="32"/>
-				</textElement>
-				<textFieldExpression><![CDATA["TỔNG THÀNH TIỀN :"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="265" y="39" width="290" height="20" uuid="600d601b-96eb-40b1-9e99-f040960e8470">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Số phòng: " + $F{roomNum}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="20" y="140" width="240" height="20" uuid="0502f85c-a06c-47b6-8f44-f613981843ac">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" markup="styled">
-					<font size="14" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{dateFormatter}.format(new java.util.Date())]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="299" y="160" width="244" height="20" uuid="98177730-7ad7-4c40-aa46-cb895117e91c">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Người mua hàng"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="20" y="160" width="240" height="20" uuid="1f06be41-2f1f-48bc-ae04-7d9271f0b54c">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" markup="styled">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Người bán hàng"]]></textFieldExpression>
-			</textField>
-		</band>
-	</summary>
 </jasperReport>
