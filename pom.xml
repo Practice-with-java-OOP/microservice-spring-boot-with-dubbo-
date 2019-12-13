@@ -40,6 +40,8 @@
         <restfb.version>2.21.0</restfb.version>
         <google-api-client.version>1.29.2</google-api-client.version>
         <jasperreports.version>6.10.0</jasperreports.version>
+        <awssdk.version>2.5.59</awssdk.version>
+        <hutool.version>4.5.11</hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -167,6 +169,16 @@
                 <version>${curator.version}</version>
                 <optional>true</optional>
             </dependency>
+
+            <!-- Amazon -->
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>bom</artifactId>
+                <version>${awssdk.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!--   jwt    -->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
@@ -209,6 +221,13 @@
                 <groupId>com.google.api-client</groupId>
                 <artifactId>google-api-client</artifactId>
                 <version>${google-api-client.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-core</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

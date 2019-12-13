@@ -61,6 +61,17 @@
             <version>2.1.5</version>
         </dependency>
 
+<!--        s3.amazon-->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>s3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+        </dependency>
+
         <!--        swagger-->
         <dependency>
             <groupId>io.springfox</groupId>

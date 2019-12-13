@@ -40,6 +40,14 @@ dubbo:
     validation: true
     filter: tracing
 
+aws:
+  s3:
+    accessKey: AKI...DHA
+    secretKey: i3oA....Px0
+    region: ap-so...st-1
+    bucket: cosalon-static
+    endpoint: https://s3-ap-sout....aws.com/cosalon-static/
+
 server:
   port: 8085
 

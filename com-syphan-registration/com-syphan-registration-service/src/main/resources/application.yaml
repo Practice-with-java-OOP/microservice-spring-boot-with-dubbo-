@@ -2,9 +2,9 @@ spring:
   application:
     name: registration-service
 
-  output:
-    ansi:
-      enabled: detect
+#  output:
+#    ansi:
+#      enabled: detect
 
   messages:
     basename: i18n/messages
@@ -77,6 +77,7 @@ dubbo:
     validation: true
     filter: tracing
 
+#  Log Level — ERROR, WARN, INFO, DEBUG or TRACE.
 logging:
   file:
     max-size: 100MB
@@ -93,6 +94,7 @@ logging:
               BasicBinder: trace
     com:
       jidian: debug
+  path: logs
 
 app:
   social:
