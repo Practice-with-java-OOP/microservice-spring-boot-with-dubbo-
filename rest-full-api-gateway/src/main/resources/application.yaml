@@ -24,6 +24,30 @@ spring:
       max-file-size: 10MB
       max-request-size: 100MB
 
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: notification_group
+    properties:
+      topics:
+        notification-topic: notification-service.notification
+        out-app-topic: notification-service.notification.out.app
+
+#  spring:
+#    kafka:
+#      consumer:
+#        bootstrap-servers: localhost:9092
+#        group-id: group_id
+#        auto-offset-reset: earliest
+#        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      producer:
+#        bootstrap-servers: localhost:9092
+#        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
 dubbo:
   metadata-report:
     address: zookeeper://127.0.0.1:2181

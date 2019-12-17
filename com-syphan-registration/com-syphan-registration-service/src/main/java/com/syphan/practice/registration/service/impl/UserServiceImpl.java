@@ -26,6 +26,7 @@ import org.jxls.common.Context;
 import org.jxls.util.JxlsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -57,6 +58,9 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
 
     @Autowired
     private GoogleProperties googleProperties;
+
+    @Autowired
+    private KafkaTemplate kafkaTemplate;
 
     @Override
     public String sendUserSignUpMailCaptcha(String email) throws BIZException {
@@ -122,6 +126,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
 
     @Override
     public User findByUsername(String username) throws BIZException {
+        kafkaTemplate.send("test.ne", "tao test cai nhe");
         return repository.findByUsername(username);
     }
 

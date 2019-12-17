@@ -20,3 +20,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 // 2 - using left join fetch, we resolve the N+1 problem
 // 3 - using attributePaths, Spring Data JPA avoids N+1 problem
 ```
+
+-- https://www.tutorialkart.com/apache-kafka/install-apache-kafka-on-mac/
+-- ~$sh bin/zookeeper-server-start.sh config/zookeeper.properties
+-- ~$sh bin/kafka-server-start.sh config/server.properties

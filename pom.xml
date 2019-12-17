@@ -229,6 +229,22 @@
                 <artifactId>hutool-core</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/io.debezium/debezium-connector-mysql -->
+            <dependency>
+                <groupId>io.debezium</groupId>
+                <artifactId>debezium-connector-mysql</artifactId>
+                <version>0.2.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.debezium/debezium-embedded -->
+            <dependency>
+                <groupId>io.debezium</groupId>
+                <artifactId>debezium-embedded</artifactId>
+                <version>0.9.5.Final</version>
+<!--                <scope>test</scope>-->
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 

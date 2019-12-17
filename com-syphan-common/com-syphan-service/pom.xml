@@ -41,6 +41,12 @@
 <!--            <groupId>org.jxls</groupId>-->
 <!--            <artifactId>jxls-reader</artifactId>-->
 <!--        </dependency>-->
+
+        <!--TODO: use kafka-->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -25,6 +25,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.dubbo.config.annotation.Reference;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -155,5 +157,10 @@ public class BoardingHouseServiceImpl extends BaseServiceImpl<BoardingHouse, Int
                     Arrays.toString(ex.getStackTrace()));
             throw ex;
         }
+    }
+
+    @KafkaListener(topics = "test.ne", groupId = "notification_group")
+    public void test(ConsumerRecord message) {
+        System.out.println(message.value().toString());
     }
 }
