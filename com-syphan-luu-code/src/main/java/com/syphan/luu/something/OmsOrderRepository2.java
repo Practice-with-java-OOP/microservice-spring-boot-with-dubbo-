@@ -1,6 +1,9 @@
 package com.syphan.luu.something;
 
 import com.syphan.practice.common.dao.JpaQueryRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 
 public interface OmsOrderRepository2 extends JpaQueryRepository<OmsOrder, Long> {
 
@@ -52,4 +55,11 @@ public interface OmsOrderRepository2 extends JpaQueryRepository<OmsOrder, Long> 
      *             pageable: Pageable
      *     ): Page<Warehouse>
      */
+
+
+    /**
+    @Query(value = "select iv.* from public.invoice iv inner join public.orders od on iv.orders_id = od.id and od.store_id = ?1 " +
+            "and (?2 is null or od.order_ref = cast(?2 as varchar))", nativeQuery = true)
+    Page<Invoice> getInvoiceBySomething(@NotNull Long storeId, String invoiceRef, Pageable pageable);
+    */
 }
